@@ -61,21 +61,16 @@ app.get('/explore', (req, res, next) => {
 processForm(app, boxClient)
 
 // ####### TOKEN ROUTE ####### //
-const dontCache = (req, res, next) => {
-  res.setHeader('Surrogate-Control', 'no-store')
-  res.setHeader(
-    'Cache-Control',
-    'no-store, no-cache, must-revalidate, proxy-revalidate'
-  )
-  res.setHeader('Expires', '0')
-  next()
-}
 
-app.get('/token', dontCache, (req, res) => {
-  return res.status(200).json({
-    token,
-  })
-})
+token(app)
+
+// app.get('/token', async (req, res) => {
+//   console.log('Inside token route TOKEN :>> ', token)
+//   const apiToken = token
+//   return res.status(200).json({
+//     token: apiToken,
+//   })
+// })
 
 app.get('/aos', async (req, res, next) => {
   try {
@@ -112,19 +107,3 @@ app.listen(3000, function () {
 })
 
 export const handler = serverless(app)
-
-// [
-//   ({ name: 'Arts, Digital Media & Communications', id: '243456623590' },
-//   { name: 'Business', id: '243469218468' },
-//   { name: 'Computer Science & IT', id: '243456982989' },
-//   { name: 'Culinary, Hospitality, Tourism', id: '243455411349' },
-//   {
-//     name: 'Design, Manufacturing, Construction & Applied Technologies',
-//     id: '243455975005',
-//   },
-//   { name: 'Education', id: '243468433972' },
-//   { name: 'Health Sciences', id: '243467987344' },
-//   { name: 'Liberal Arts', id: '243455662920' },
-//   { name: 'Public & Social Services', id: '243468208150' },
-//   { name: 'Science, Engineering & Math', id: '243470173965' })
-// ]
