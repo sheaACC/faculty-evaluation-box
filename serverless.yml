@@ -1,0 +1,15 @@
+org: sheadscott
+app: faculty-eval-api
+service: faculty-eval-api
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-2
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi: '*'

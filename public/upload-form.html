@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Rubrics and Department Policies</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        fieldset {
+            margin-bottom: 1em;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+        }
+
+        select,
+        input,
+        textarea {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        input[type="submit"] {
+            width: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        table th:nth-child(2),
+        table th:nth-child(3) {
+            width: 20%;
+        }
+
+        table td:nth-child(2),
+        table td:nth-child(3) {
+            width: 20%;
+        }
+
+        td.indent-left {
+            padding-left: 2rem;
+        }
+
+        td input {
+            width: auto;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Upload Rubric</h1>
+        <!-- <form action="/process-form" method="post" enctype="application/x-www-form-urlencoded"> -->
+        <form action="/process-form" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <label for="aos">AOS</label>
+                <select name="aos" id="aos">
+                    <option value="">-- Select Your AOS --</option>
+                    <option value="admc">Arts, Digital Media & Communications</option>
+                    <option value="bus">Business</option>
+                    <option value="csit">Computer Science &amp; IT</option>
+                    <option value="cht">Culinary, Hospitality &amp; Tourism</option>
+                    <option value="dmcat">Design, Manufacturing, Construction &amp; Applied Technologies</option>
+                    <option value="ed">Education</option>
+                    <option value="hs">Health Sciences</option>
+                    <option value="la">Liberal Arts</option>
+                    <option value="pss">Public &amp; Social Services</option>
+                    <option value="sem">Science, Engineering, and Math</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <label for="dept">Department</label>
+                <select name="dept" id="dept">
+                    <option value="">-- Select a Department --</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <label for="last-updated">Last Updated</label>
+                <input type="date" />
+            </fieldset>
+
+            <h3>
+                Submission Deadlines for Faculty Evaluation Materials:
+            </h3>
+            <div><label for="course-materials">Course materials and other required portfolio materials (recommended immediately after the spring semester, but must be before beginning of the following fall semester):</label>
+                <input type="text" name="course-materials" />
+            </div>
+            <div><label for="reflection-forms">
+                    Faculty Reflection Forms: 3 weeks after faculty receive Student Course Evaluation reports (or week 3 of the semester, whichever is later)
+                </label>
+                <input type="text" name="reflection-forms" />
+            </div>
+            <h3>Department-specific requirements for Faculty Evaluation:</h3>
+            <div>
+                <label for="additional-materials">Additional materials to be submitted (please note frequency: annually, in year 1 of cycle, etc.):</label>
+                <textarea name="additional-materials" rows="5"></textarea>
+            </div>
+            <div>
+                <label for="specific-materials">Specific course materials required (in years where course materials are submitted)</label>
+                <textarea name="specific-materials" rows="5"></textarea>
+            </div>
+            <div>
+                <label for="number-of-courses">When submitting course materials, submit materials for: </label>
+                <textarea name="number-of-courses" rows="5" placeholder="2 courses (standard)"></textarea>
+            </div>
+            <div>
+                <label for="summer-refllection">Submit Faculty Reflection Forms for summer semester:</label>
+                <textarea name="summer-refllection" rows="5" placeholder="No (standard)"></textarea>
+            </div>
+            <div>
+                <label for="performance">Additional Department-specific Administrative Performance requirements in addition to College requirements:</label>
+                <textarea name="performance" rows="5" placeholder="No additional requirements"></textarea>
+            </div>
+            <div>
+                <label for="professional-service">Additional Department-specific expectations for Professional Service (full-time faculty only) in addition to College requirements:</label>
+                <textarea name="professional-service" rows="5" placeholder="No additional requirements"></textarea>
+            </div>
+            <div>
+                <label for="other-instructions">Other department-specific instructions: </label>
+                <textarea name="other-instructions" rows="5" placeholder="No additional instructions"></textarea>
+            </div>
+
+
+            <h3>
+                Departmental Faculty Evaluation Process:
+            </h3>
+            <div>
+                <label for="evaluation-process">Please describe how your department handles evaluations from the time items are submitted until the Department Chairs signs off on the evaluations. If the process is different for full-time and adjunct faculty, be sure to describe those differences:</label>
+                <textarea name="evaluation-process" rows="5"></textarea>
+            </div>
+
+            <h3>Departmental weighting of criteria in determining Overall Rating:</h3>
+            <p>Fill in departmental weighting below:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Full-Time</th>
+                        <th>Adjunct</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="3"><strong>Teaching and Student Learning:</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="indent-left">Instructional performance (required: at least 40%)</td>
+                        <td><input type="text" name="ft-ip" /></td>
+                        <td><input type="text" name="adj-ip" /></td>
+                    </tr>
+                    <tr>
+                        <td class="indent-left">Student feedback and faculty reflection
+                            (required: between 20% and 30%)</td>
+                        <td><input type="text" name="ft-sf" /></td>
+                        <td><input type="text" name="adj-sf" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><strong>Professional Responsibilities:</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="indent-left">Administrative performance (required: at least 5%)</td>
+                        <td><input type="text" name="ft-ap" /></td>
+                        <td><input type="text" name="adj-ap" /></td>
+                    </tr>
+                    <tr>
+                        <td class="indent-left">
+                            Professional development and growth
+                            (required: at least 5%)</td>
+                        <td><input type="text" name="ft-pd" /></td>
+                        <td><input type="text" name="adj-pd" /></td>
+                    </tr>
+                    <tr>
+                        <td class="indent-left">
+                            Professional service (Required for full-time only,
+                            required: at least 15%)</td>
+                        <td><input type="text" name="ft-ps" /></td>
+                        <td><input type="text" name="adj-ps" /></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Departmental Rubrics to be used in determining ratings:</h3>
+            <label for="all-rubrics">
+                All rubrics:
+            </label>
+            <input type="file" id="all-rubrics" name="all-rubrics" accept="">
+
+            <h3>Or</h3>
+            <label for="ip-rubric">
+                Instructional performance rubric:
+            </label>
+            <input type="file" id="ip-rubric" name="ip-rubric" accept="">
+
+            <label for="sf-rubric">
+                Student feedback and faculty reflection rubric:
+            </label>
+            <input type="file" id="sf-rubric" name="sf-rubric" accept="">
+
+            <label for="ap-rubric">
+                Administrative performance rubric:
+            </label>
+            <input type="file" id="ap-rubric" name="ap-rubric" accept="">
+
+            <label for="ap-rubric">
+                Professional development and growth rubric:
+            </label>
+            <input type="file" id="ap-rubric" name="ap-rubric" accept="">
+
+            <label for="ps-rubric">
+                Professional service (Required for full-time only) rubric:
+            </label>
+            <input type="file" id="ps-rubric" name="ps-rubric" accept="">
+
+            <input type="submit" value="Submit" />
+    </main>
+</body>
+<script src="js/departments-by-aos.js"></script>
+<script src="js/upload-form.js"></script>
+
+</html>
