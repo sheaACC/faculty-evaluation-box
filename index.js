@@ -45,7 +45,7 @@ app.use(cors())
 uploadFile(app, boxClient)
 
 app.get('/', (req, res) => {
-  res.send('This is a the home page!')
+  res.sendFile(path.join(process.cwd(), './public/index.html'))
 })
 
 app.get('/upload', (req, res, next) => {
