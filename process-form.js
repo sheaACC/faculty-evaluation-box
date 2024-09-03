@@ -85,10 +85,7 @@ export default function processForm(app, boxClient) {
         // }, 5000)
 
         var stream = fs.createReadStream('/tmp/custom.pdf')
-        var options = {
-          content_created_at: '2015-05-12T17:38:14-0600',
-          content_modified_at: '2016-02-15T22:42:09-0600',
-        }
+        var options = {}
         boxClient.files
           // Use the root folder ID '0' for testing
           .uploadFile('0', 'NewPDF.pdf', stream, options)
